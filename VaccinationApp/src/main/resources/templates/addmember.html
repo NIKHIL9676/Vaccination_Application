@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="homebase::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="col-md-8 offset-md-2">
+				<div id="my-card" class="mt-3">
+					<div class="container text-center">
+						<img class="" style="width: 100px; height: 100px" alt=""
+							th:src="@{/images/addmember.png}">
+					</div>
+					<form th:action="'/view_members'">
+						<button type="submit" class="btn btn-primary">view added
+							members</button>
+					</form>
+					<div class="text-center">
+						<h1 class="display-6">Add Member Details</h1>
+					</div>
+
+
+
+					<form th:action="'/registermember'" method="post">
+
+						<div th:if="${message != null}">
+    						<div th:if="${message.type == 'error'}" th:classappend="${'alert alert-danger'}" th:text="${message.content}" role="alert"></div>
+    						<div th:if="${message.type == 'saved'}" th:classappend="${'alert alert-primary'}" th:text="${message.content}" role="alert"></div>
+					</div>
+
+						<div class="mb-3">
+							<label class="form-label">Name</label> <input type="text"
+								class="form-control" name="name">
+						</div>
+
+						<div class="form-label">
+							Identity Proof Name <select name="identity_type"
+								class="form-control" id="cars">
+								<option class="dropdown-item" value="" selected>Select
+									Govt proof</option>
+								<option class="dropdown-item" value="Aadhar_Card">Aadhar
+									Card</option>
+								<option class="dropdown-item" value="Pan_Card">Pan Card</option>
+								<option class="dropdown-item" value="Voter_Card">Voter
+									Card</option>
+								<option class="dropdown-item" value="Driving_license">Driving
+									license</option>
+							</select>
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label">Identity Proof Number</label> <input
+								type="text" name="identity_number" class="form-control">
+						</div>
+
+						<div class="form-label">
+							Vaccine Name <select name="vaccine_name" class="form-control"
+								id="cars">
+								<option class="dropdown-item" value="" selected>Select
+									Vaccine</option>
+								<option class="dropdown-item" value="Covaxin">Covaxin</option>
+								<option class="dropdown-item" value="Covishield">Covishield</option>
+								<option class="dropdown-item" value="Pfizer">Pfizer</option>
+								<option class="dropdown-item" value="Sputnik-V">Sputnik-V</option>
+							</select>
+						</div>
+
+						<div class="form-label">
+							No of doses <select name="no_of_doses" class="form-control"
+								id="cars">
+								<option class="dropdown-item" value="" selected>Select
+									No of doses</option>
+								<option class="dropdown-item" value="0">Not vaccinated</option>
+								<option class="dropdown-item" value="1">1</option>
+								<option class="dropdown-item" value="2">2</option>
+								<option class="dropdown-item" value="3">3</option>
+							</select>
+						</div>
+						<!-- 						<input type="hidden" name="user" value="${username.id}">
+ -->
+						<div class="container">
+							<div class="text-center">
+								<button type="submit" class="btn btn-warning text-white">Submit</button>
+								<button type="reset" class="btn btn-primary">Reset</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

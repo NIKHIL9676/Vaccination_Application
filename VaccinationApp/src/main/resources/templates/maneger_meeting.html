@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="homebase::Layout(~{::section})" xmlns:sec="http://www.thymeleaf.org/extras/security">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		Hello welcome to Manager meeting room
+		<a th:href="@{/}">Back to home</a>
+	</section>
+</body>
+</html>

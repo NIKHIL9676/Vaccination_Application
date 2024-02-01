@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+   th:replace="homebase::Layout(~{::section})">
+   <head>
+      <meta charset="ISO-8859-1">
+      <title>Insert title here</title>
+   </head>
+   <body>
+      <section>
+         <div class="container">
+            <div class="col-md-8 offset-md-2">
+               <div id="my-card" class="mt-3">
+                  <div class="text-center">
+                     <img alt="" style="width: 100px; height: 100px"
+                        th:src="@{/images/update.png}">
+                     <h1 class="display-5">Update Member Details</h1>
+                  </div>
+                    <form th:action="'/view_members'">
+						<button type="submit" class="btn btn-primary">view added members</button>
+					</form>
+					
+                  <form th:action="@{/updateMemberEntity}" th:object="${member}" method="post">
+                  	<div class="alert alert-primary" role="alert" th:if="${response!=null}" th:text="${response}"></div>
+                     
+                     <!-- id -->
+						<input type="text" th:value="${member.id}" name="id" hidden>
+
+						<!-- Name -->
+                     <div class="mb-3">
+                        <label class="form-label">Name</label> <input type="text" th:value="${member.name}"
+                           class="form-control" name="name">
+                     </div>
+                     <!-- Identity Proof Name -->
+                     <div class="form-label">
+                        Identity Proof Name 
+                        <select name="identity_type"
+                           class="form-control" id="identityType">
+                           <option class="dropdown-item" value="Aadhar_Card"
+                              th:selected="${member.identity_type == 'Aadhar_Card'}">Aadhar
+                              Card
+                           </option>
+                           <option class="dropdown-item" value="Pan_Card"
+                              th:selected="${member.identity_type == 'Pan_Card'}">Pan
+                              Card
+                           </option>
+                           <option class="dropdown-item" value="Voter_Card"
+                              th:selected="${member.identity_type == 'Voter_Card'}">Voter
+                              Card
+                           </option>
+                           <option class="dropdown-item" value="Driving_license"
+                              th:selected="${member.identity_type == 'Driving_license'}">Driving
+                              license
+                           </option>
+                        </select>
+                     </div>
+                     <div class="mb-3">
+                        <label class="form-label">Identity Proof Number</label> <input
+                           type="text" name="identity_number"
+                           th:value="${member.identity_number}" class="form-control">
+                     </div>
+                     <!-- Vaccine Name -->
+                     <div class="form-label">
+                        Vaccine Name 
+                        <select name="vaccine_name" class="form-control"
+                           id="vaccineName">
+                           <option class="dropdown-item" value="Covaxin"
+                              th:selected="${member.vaccine_name == 'Covaxin'}">Covaxin</option>
+                           <option class="dropdown-item" value="Covishield"
+                              th:selected="${member.vaccine_name == 'Covishield'}">Covishield</option>
+                           <option class="dropdown-item" value="Pfizer"
+                              th:selected="${member.vaccine_name == 'Pfizer'}">Pfizer</option>
+                           <option class="dropdown-item" value="Sputnik-V"
+                              th:selected="${member.vaccine_name == 'Sputnik-V'}">Sputnik-V</option>
+                        </select>
+                     </div>
+                     <div class="form-label">
+                        No of doses 
+                        <select name="no_of_doses" class="form-control"
+                           id="noOfDoses">
+                           <option class="dropdown-item" value="0"
+                              th:selected="${member.no_of_doses == 0}">Not
+                              vaccinated
+                           </option>
+                           <option class="dropdown-item" value="1"
+                              th:selected="${member.no_of_doses == 1}">1</option>
+                           <option class="dropdown-item" value="2"
+                              th:selected="${member.no_of_doses == 2}">2</option>
+                           <option class="dropdown-item" value="3"
+                              th:selected="${member.no_of_doses == 3}">3</option>
+                        </select>
+                     </div>
+                     <!-- 						<input type="hidden" name="user" value="${username.id}">
+                        -->
+                     <div class="container">
+                        <div class="text-center">
+                           <button type="submit" class="btn btn-warning text-white">Update</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </section>
+   </body>
+</html>

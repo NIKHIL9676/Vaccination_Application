@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="homebase::Layout(~{::section})"
+	xmlns:sec="http://www.thymeleaf.org/extras/security">
+<head>
+<style type="text/css">
+   
+</style>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+    <section>
+<div style="position: relative;">
+    <img alt="" th:src="@{/images/vaccine.jpg}" style="width: 100%; height: 520px; object-fit: cover;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 520px; background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);">
+        <!-- Button on top of the image -->
+        
+        <div class="container">
+        	<p class="display-3" style="white-space: nowrap;padding-left:250px;padding-top:120px">Make your Family Vaccinated</p>
+        <a th:href="@{/addmember}"><button class="btn btn-primary" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #007BFF; color: #fff; padding: 10px 20px;  cursor: pointer;">
+			<div>Add you family member   </div>     
+		</button>
+		</a>
+		</div>
+        <!-- Add any additional content or text you want on top of the image here -->
+    </div>
+</div>
+
+
+    </section>
+    
+</body>
+</html>
